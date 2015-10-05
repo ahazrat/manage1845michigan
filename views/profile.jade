@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  .container
+    h1.text-center.login-title #{user.firstname}s Profile
+    .row.profile
+      .col-xs-4
+        img(alt="Profile image", width="300", src=user.pic)
+      .col-xs-8
+        .row
+          .col-xs-4
+            p Email
+            p First Name
+            p Last Name
+            p Picture
+            p Role
+          .col-xs-8
+            .row
+              p= user.email
+            .row
+              if(edit==='first')
+                include forms/editprofile/first
+              else
+                p= user.firstname
+                  a(href='/profile/editfirst')   Edit
+            .row
+              if(edit==='last')
+                include forms/editprofile/last
+              else
+                p= user.lastname
+                  a(href='/profile/editlast')   Edit
+            .row
+              if(edit==='pic')
+                include forms/editprofile/pic
+              else
+                p(maxlength="20")= user.pic
+                  a(href='/profile/editpic')   Edit
+            .row
+              p= user.role
+    .row
+      .col-xs-4.col-xs-offset-6
+        a(href='/logout', class='text-center new-account') Sign Out

@@ -1,0 +1,26 @@
+@import '../modules/all';
+
+.curtain {
+    z-index: -1;
+    background-color: $skyblue;
+    height: 300px;
+    width: 100%;
+    position: absolute;
+}
+
+.account-wall img {
+    width: 600px;
+    margin-left: -100px;
+}
+
+.table {
+    background-color: $tablebackgroundcolor;
+}
+
+.profile {
+    padding: 30px;
+    background-color: $profilebgcolor;
+    span {
+        display: inline-block;
+    }
+}

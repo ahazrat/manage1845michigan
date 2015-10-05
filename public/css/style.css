@@ -1,0 +1,19 @@
+.curtain {
+  z-index: -1;
+  background-color: #9BAEBA;
+  height: 300px;
+  width: 100%;
+  position: absolute; }
+
+.account-wall img {
+  width: 600px;
+  margin-left: -100px; }
+
+.table {
+  background-color: #E7E7E7; }
+
+.profile {
+  padding: 30px;
+  background-color: #EEEEEE; }
+  .profile span {
+    display: inline-block; }

@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  .container
+    .row
+      h1 Page 2a
+      ul
+        li(ng-repeat='phone in phones')
+          b {{ phone.name }}
+          | {{ phone.snippet }}
