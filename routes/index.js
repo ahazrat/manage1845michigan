@@ -13,7 +13,7 @@ var isAuthenticated = function (req, res, next) {
 module.exports = function (passport) {
     
     // GET login
-    router.get('/', function(req, res, next) {
+    router.get('/', function(req, res) {
       res.render('index', {
           title: '1845 S Michigan Ave',
           message: req.flash('message')
@@ -40,14 +40,14 @@ module.exports = function (passport) {
     }));
     
     /* GET home */
-    router.get('/home', isAuthenticated, function (req, res, next) {
+    router.get('/home', isAuthenticated, function (req, res) {
         res.render('home', {
             title: 'Home | 1845 S Michigan Ave',
             user: req.user
         });
     });
     /* POST home */
-    router.post('/home', isAuthenticated, function (req, res, next) {
+    router.post('/home', isAuthenticated, function (req, res) {
         var newProject = new Projects();
         newProject.title = req.param('title');
         newProject.status = req.param('status');
@@ -58,14 +58,14 @@ module.exports = function (passport) {
     });
     
     /* GET profile */
-    router.get('/profile', isAuthenticated, function (req, res, next) {
+    router.get('/profile', isAuthenticated, function (req, res) {
         res.render('profile', {
             title: 'Profile | 1845 S Michigan Ave',
             user: req.user
         });
     });
     /* GET profile/editfirst */
-    router.get('/profile/editfirst', isAuthenticated, function (req, res, next) {
+    router.get('/profile/editfirst', isAuthenticated, function (req, res) {
         res.render('profile', {
             title: 'Profile | 1845 S Michigan Ave',
             user: req.user,
@@ -73,7 +73,7 @@ module.exports = function (passport) {
         });
     });
     /* POST profile/editfirst */
-    router.post('/profile/editfirst', isAuthenticated, function (req, res, next) {
+    router.post('/profile/editfirst', isAuthenticated, function (req, res) {
         var email = req.user.email;
         var newName = req.param('firstname');
         Users.update({ 'email': email }, { $set: { 'firstname': newName } }, function (err, user) {
@@ -82,7 +82,7 @@ module.exports = function (passport) {
         });
     });
     /* GET profile/editlast */
-    router.get('/profile/editlast', isAuthenticated, function (req, res, next) {
+    router.get('/profile/editlast', isAuthenticated, function (req, res) {
         res.render('profile', {
             title: 'Profile | 1845 S Michigan Ave',
             user: req.user,
@@ -90,7 +90,7 @@ module.exports = function (passport) {
         });
     });
     /* POST profile/editlast */
-    router.post('/profile/editlast', isAuthenticated, function (req, res, next) {
+    router.post('/profile/editlast', isAuthenticated, function (req, res) {
         var email = req.user.email;
         var newName = req.param('lastname');
         Users.update({ 'email': email }, { $set: { 'lastname': newName } }, function (err, user) {
@@ -99,7 +99,7 @@ module.exports = function (passport) {
         });
     });
     /* GET profile/editpic */
-    router.get('/profile/editpic', isAuthenticated, function (req, res, next) {
+    router.get('/profile/editpic', isAuthenticated, function (req, res) {
         res.render('profile', {
             title: 'Profile | 1845 S Michigan Ave',
             user: req.user,
@@ -107,7 +107,7 @@ module.exports = function (passport) {
         });
     });
     /* POST profile/editpic */
-    router.post('/profile/editpic', isAuthenticated, function (req, res, next) {
+    router.post('/profile/editpic', isAuthenticated, function (req, res) {
         var email = req.user.email;
         var newPic = req.param('pic');
         Users.update({ 'email': email }, { $set: { 'pic': newPic } }, function (err, user) {
@@ -117,7 +117,7 @@ module.exports = function (passport) {
     });
     
     /* GET page2 */
-    router.get('/page2', isAuthenticated, function (req, res, next) {
+    router.get('/page2', isAuthenticated, function (req, res) {
         res.render('page2', {
             title: 'page2 | 1845 S Michigan Ave',
             user: req.user
@@ -125,7 +125,7 @@ module.exports = function (passport) {
     });
     
     /* GET admin */
-    router.get('/admin', isAuthenticated, function (req, res, next) {
+    router.get('/admin', isAuthenticated, function (req, res) {
         if (req.user.role==='admin') {
             res.render('admin', {
                 title: 'Admin | 1845 S Michigan Ave',
@@ -143,7 +143,7 @@ module.exports = function (passport) {
     
     // data
     // pull projects
-    router.get('/projects', function (req, res, next) {
+    router.get('/projects', function (req, res) {
         Projects.find(function (err, docs) {
             if (err) return console.log(err);
             console.log('Asif: Pulled all projects from database');
@@ -151,7 +151,7 @@ module.exports = function (passport) {
         });
     });
     // add project
-    router.post('/projects', function (req, res, next) {
+    router.post('/projects', function (req, res) {
         var newProject = new Projects();
         newProject.title = req.body.title;
         newProject.status = req.body.status;
