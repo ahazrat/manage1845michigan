@@ -10,6 +10,11 @@ var isAuthenticated = function (req, res, next) {
     res.redirect('/');
 };
 
+router.use(function timelog(req, res, next) {
+    console.log('Time: ', Date('1995-12-17T03:24:00'));
+    next();
+});
+
 module.exports = function (passport) {
     
     // GET login
