@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ui.router']);
 
 myApp.filter('unique', function() {
    return function(collection, keyname) {
