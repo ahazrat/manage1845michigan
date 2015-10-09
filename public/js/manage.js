@@ -21,10 +21,17 @@ angular.module('manageApp', ['ngAnimate'])
       manageList.viewprojects = manageList.openprojects;
     };
     
+    manageList.showNewProjectForm = false;
+    
+    manageList.toggleNewProjectForm = function () {
+      manageList.showNewProjectForm === true ? manageList.showNewProjectForm = false : manageList.showNewProjectForm = true;
+    };
+    
     // initialize home page
     manageList.refreshProjects();
     manageList.viewAllProjects();
     
+    // tutorial stuff
     manageList.toggle = false;
     
     manageList.list=[

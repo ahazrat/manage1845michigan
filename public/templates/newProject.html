@@ -1,0 +1,12 @@
+<form ng-if='manageList.showNewProjectForm'>
+  <div class='form-group'>
+    <label>Project Title</label><br>
+    <input ng-model='manageList.projectTitle' placeholder='Project title'>
+  </div>
+  <div>
+    <label>Project Status</label><br>
+    <input ng-model='manageList.projectStatus' placeholder='Project status'>
+  </div>
+  <br>
+  <button class='btn btn-default' ng-click='addProject()'>Add Project</button>
+</form>
