@@ -43,6 +43,9 @@ passportConfig(passport);
 var routes = require('./routes/index')(passport);
 app.use('/', routes);
 // app.use('/users', users);
+// app.get('/', function (req, res) {
+//   res.render('angulartest');
+// });
 
 // catch 404 set error handlers
 app.use(function(req, res, next) {

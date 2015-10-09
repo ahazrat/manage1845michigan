@@ -1,0 +1,60 @@
+doctype html
+html(ng-app='manageApp')
+  head
+    // page setup
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title= title
+    
+    // page meta
+    meta(name='description', content='A dashboard for capturing and verifying manufacturing quality assurance.')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    
+    // scripts
+    script(type="text/javascript", src="https://code.jquery.com/jquery-latest.min.js")
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js')
+    script(src='lib/angular-ui-router.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-animate.js')
+    script(src='js/manage.js')
+    
+    // styles
+    link(rel="stylesheet", type='text/css', href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+    link(rel='stylesheet', type='text/css', href='/css/style.css')
+    
+  body(ng-controller='manageCtrl as manageList')
+  
+    .curtain
+    include partials/navbar
+    
+    .container
+      .row
+        h1 Home Page!
+        p home page content goes here
+      .row
+        a.btn.btn-primary.pull-right(ng-click='manageList.viewOpenProjects()') Show Open Projects
+        a.btn.btn-default.pull-right(ng-click='manageList.viewAllProjects()') Show All Projects
+        br
+        br
+        table.table.table-bordered.table-hover.table-striped
+          tr
+            th Index
+            th Project Title
+            th Project Status
+          tr(ng-repeat='project in manageList.viewprojects')
+            td {{ $index + 1 }}
+            td {{ project.title }}
+            td {{ project.status }}
+    
+    input(type='text' ng-model='search' placeholder='Search')
+    ul(ng-if='manageList.toggle')
+      li(ng-repeat='item in manageList.list | filter: search' ng-class='item.age>29 ? "over-thirty" : "under-thirty"' ng-include='"templates/person.html"')
+    br
+    button(ng-if='!manageList.toggle' ng-click='manageList.toggle = true') Show Names
+    button(ng-if='manageList.toggle' ng-click='manageList.toggle = false') Hide Names
+    form(ng-submit='manageList.addPerson()')
+      input(type='text' placeholder='Name' ng-model='manageList.name')
+      br
+      input(type='number' placeholder='Age' ng-model='manageList.age')
+      br
+      input(type='submit' value='Submit')
