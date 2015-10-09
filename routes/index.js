@@ -46,7 +46,7 @@ module.exports = function (passport) {
     
     /* GET home */
     router.get('/home', isAuthenticated, function (req, res) {
-        res.render('angulartest', {
+        res.render('homenew', {
             title: 'Home | 1845 S Michigan Ave',
             user: req.user
         });

@@ -26,6 +26,7 @@ html(ng-app='manageApp')
   
     .curtain
     include partials/navbar
+    ng-include(src='"templates/navbar.html"')
     
     .container
       .row
@@ -50,19 +51,4 @@ html(ng-app='manageApp')
           a.btn.btn-primary(ng-click='manageList.toggleNewProjectForm()') New Project
           br
           br
-          ng-include(src='"templates/newProject.html"')
-    
-      .row
-        h1 Angular Tutorial Bits
-        input(type='text' ng-model='search' placeholder='Search')
-        ul(ng-if='manageList.toggle')
-          li(ng-repeat='item in manageList.list | filter: search' ng-class='item.age>29 ? "over-thirty" : "under-thirty"' ng-include='"templates/person.html"')
-        br
-        button(ng-if='!manageList.toggle' ng-click='manageList.toggle = true') Show Names
-        button(ng-if='manageList.toggle' ng-click='manageList.toggle = false') Hide Names
-        form(ng-submit='manageList.addPerson()')
-          input(type='text' placeholder='Name' ng-model='manageList.name')
-          br
-          input(type='number' placeholder='Age' ng-model='manageList.age')
-          br
-          input(type='submit' value='Submit')
+          ng-include(src='"templates/forms/newproject.html"')

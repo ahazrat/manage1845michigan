@@ -33,19 +33,15 @@ myApp.controller('myListCtrl', ['$scope', '$http', function ($scope, $http) {
       });
     });
   };
-  
   $scope.viewAllProjects = function () {
     $scope.viewprojects = $scope.projects;
   };
-  
   $scope.viewOpenProjects = function () {
     $scope.viewprojects = $scope.openprojects;
   };
-  
   $scope.toggleNewProjectForm = function () {
     $scope.showNewProjectForm = $scope.showNewProjectForm === false ? true : false;
   };
-  
   $scope.addProject = function () {
     var newProject = $scope.project;
     $scope.project = '';
