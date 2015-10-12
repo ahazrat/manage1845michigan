@@ -15,7 +15,6 @@ nav(class='navbar navbar-default')
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
             if user
                 ul(class='nav navbar-nav')
-                    // li(class='active'): a(href='/page2') Page2
                     li(class='active'): a(ui-sref='.page2') Page2
                         span(class='sr-only') (current)
                     if(user.role==='admin')
@@ -29,7 +28,7 @@ nav(class='navbar navbar-default')
                     input.form-control(type='text' placeholder='Search projects' ng-model='searchtext')
             ul(class='nav navbar-nav navbar-right')
                 if user
-                    li: a(href='/profile')= user.firstname
+                    li: a(ui-sref='profile')= user.firstname
                     li: a(href='/logout') Logout
                 if !user
                     li: a(href='signup') Signup

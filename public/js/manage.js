@@ -14,6 +14,11 @@ manageApp.config(function ($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/page2.html'
   });
   
+  $stateProvider.state('profile', {
+    url: '/profile',
+    templateUrl: 'templates/profile.html'
+  });
+  
 });
 
 manageApp.filter('unique', function () {
