@@ -1,0 +1,37 @@
+<h1 class='text-center login-title'>#{user.firstname}s Profile</h1>
+
+<div class='row profile'>
+  
+  <div class='col-xs-4'>
+    <img alt='Profile image' width='300' src=user.pic>
+  </div>
+  
+  <div class='col-xs-8'>
+    <div class='row'>
+      
+      <div class='col-xs-4'>
+        <p>Email</p>
+        <p>First Name</p>
+        <p>Last Name</p>
+        <p>Picture</p>
+        <p>Role</p>
+      </div>
+      
+      <div class='col-xs-8'>
+        <p>#{user.email}</p>
+        <p>#{user.firstname} <a>Edit</a></p>
+        <p>#{user.lastname} <a>Edit</a></p>
+        <p>#{user.pic} <a>Edit</a></p>
+        <p>#{user.role}</p>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<div class='row'>
+  <div class='col-xs-4 col-xs-offset-6'>
+    <a href='/logout' class='text-center new-account'>Sign Out</a>
+  </div>
+</div>
