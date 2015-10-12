@@ -1,4 +1,20 @@
-var manageApp = angular.module('manageApp', ['ngAnimate']);
+var manageApp = angular.module('manageApp', ['ui.router', 'ngAnimate']);
+
+manageApp.config(function ($stateProvider, $urlRouterProvider) {
+  
+  $urlRouterProvider.otherwise('/projects');
+  
+  $stateProvider.state('projects', {
+    url: '/projects',
+    templateUrl: 'templates/home.html'
+  });
+  
+  $stateProvider.state('page2', {
+    url: '/page2',
+    templateUrl: 'templates/page2.html'
+  });
+  
+});
 
 manageApp.filter('unique', function () {
   return function (collection, keyname) {

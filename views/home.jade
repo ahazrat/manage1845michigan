@@ -1,36 +1,26 @@
-extends layout
-
-block content
-  .container
-    .row
-      .col-xs-6
-        h1 Projects and Status
-        select.selectpicker
-          option hello
-          option all you
-          option happy
-          option people
-        hr
-    .row
-      a.btn.btn-primary.pull-right(ng-click="viewOpenProjects()") Show Open Projects
-      a.btn.btn-default.pull-right(ng-click='viewAllProjects()') Show All Projects
-      br
-      br
-      table.table.table-striped.table-bordered.table-hover
-        tr
-          th Index
-          th Project Title
-          th Project Status
-            select.pull-right.selectpicker
-              option(value='') All
-              option(ng-repeat="project in projects | unique: 'status' | orderBy: 'status'", value='{{ project.status }}') {{ project.status }}
-        tr(ng-repeat='project in viewprojects')
-          td {{ $index + 1 }}
-          td {{ project.title }}
-          td {{ project.status }}
-    .row
-      .col-xs-4
-        a.btn.btn-primary(ng-click='toggleNewProjectForm()') New project
-        br
-        br
-        include forms/addproject
+.row
+  h1 Home Page!
+  p home page content goes here
+.row
+  a.btn.btn-primary.pull-right(ng-click='searchtext="Open"') Show Open Projects
+  a.btn.btn-default.pull-right(ng-click='searchtext=""') Show All Projects
+  br
+  br
+  table.table.table-bordered.table-hover.table-striped
+    tr
+      th Index
+      th Project Title
+      th Project Status
+        select.pull-right.selectpicker(ng-model='searchtext')
+          option(value='') All
+          option(ng-repeat="project in manageList.projects | unique: 'status' | orderBy: 'status'", value='{{ project.status }}') {{ project.status }}
+    tr(ng-repeat='project in manageList.projects | filter: searchtext')
+      td {{ $index + 1 }}
+      td {{ project.title }}
+      td {{ project.status }}
+.row
+  .col-xs-4
+    a.btn.btn-primary(ng-click='manageList.toggleNewProjectForm()') New Project
+    br
+    br
+    ng-include(src='"templates/forms/newproject.html"')
