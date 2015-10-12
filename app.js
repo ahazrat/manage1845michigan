@@ -10,7 +10,6 @@ var passport = require('passport');
 var passportConfig = require('./passport/init');
 var expressSession = require('express-session');
 var mongoose = require('mongoose');
-// var users = require('./routes/users');
 
 var app = express();
 
@@ -42,9 +41,10 @@ passportConfig(passport);
 // set routes
 var routes = require('./routes/index')(passport);
 app.use('/', routes);
+// var users = require('./routes/users');
 // app.use('/users', users);
 // app.get('/', function (req, res) {
-//   res.render('angulartest');
+//   res.render('index');
 // });
 
 // catch 404 set error handlers

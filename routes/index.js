@@ -19,7 +19,7 @@ module.exports = function (passport) {
     
     // GET login
     router.get('/', function(req, res) {
-      res.render('index', {
+      res.render('index1', {
           title: '1845 S Michigan Ave',
           message: req.flash('message')
       });
@@ -46,7 +46,7 @@ module.exports = function (passport) {
     
     /* GET home */
     router.get('/home', isAuthenticated, function (req, res) {
-        res.render('homenew', {
+        res.render('index', {
             title: 'Home | 1845 S Michigan Ave',
             user: req.user
         });

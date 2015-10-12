@@ -1,5 +1,22 @@
 var manageApp = angular.module('manageApp', ['ngAnimate']);
 
+manageApp.filter('unique', function () {
+  return function (collection, keyname) {
+    var output = [];
+    var keys = [];
+    
+    angular.forEach(collection, function (item) {
+      var key = item[keyname];
+      if (keys.indexOf(key)===-1) {
+        keys.push(key);
+        output.push(item);
+      }
+    });
+    
+    return output;
+  };
+});
+
 manageApp.controller('manageCtrl', function ($http) {
   
   var manageList = this;
@@ -7,27 +24,16 @@ manageApp.controller('manageCtrl', function ($http) {
   manageList.refreshProjects = function() {
     $http.get('/projects').success(function (response) {
       manageList.projects = response;
-      manageList.viewprojects = response;
-      manageList.openprojects = manageList.projects.filter(function (projects) {
-        return projects.status === 'Open';
-      });
     });
-  };
-  manageList.viewAllProjects = function () {
-    manageList.viewprojects = manageList.projects;
-  };
-  manageList.viewOpenProjects = function () {
-    manageList.viewprojects = manageList.openprojects;
   };
   manageList.showNewProjectForm = false;
   manageList.toggleNewProjectForm = function () {
-    manageList.showNewProjectForm === true ? manageList.showNewProjectForm = false : manageList.showNewProjectForm = true;
+    manageList.showNewProjectForm = manageList.showNewProjectForm === true ? false : true;
   };
   manageList.addProject = function () {
     manageList.toggleNewProjectForm();
     manageList.projects.push({ title: manageList.newProject.title, status: manageList.newProject.status });
     $http.post('/projects', manageList.newProject).success(function (response) {
-      manageList.refreshProjects();
       manageList.newProject.title = '';
       manageList.newProject.status = '';
     });
@@ -35,6 +41,5 @@ manageApp.controller('manageCtrl', function ($http) {
   
   // initialize home page
   manageList.refreshProjects();
-  manageList.viewAllProjects();
   
 });

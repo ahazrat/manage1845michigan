@@ -24,10 +24,8 @@ nav(class='navbar navbar-default')
                             span(class='caret')
                         ul(class='dropdown-menu')
                             li(ng-repeat='project in openprojects'): a(href='#') {{ project.title }}
-                form(class='navbar-form navbar-left', role='search')
-                    .form-group
-                        input(type='text', class='form-control', placeholder='search strategies')
-                    button(type='submit', class='btn btn-default') Submit
+                form.navbar-form.navbar-left(role='search')
+                    input.form-control(type='text' placeholder='Search projects' ng-model='searchtext')
             ul(class='nav navbar-nav navbar-right')
                 if user
                     li: a(href='/profile')= user.firstname

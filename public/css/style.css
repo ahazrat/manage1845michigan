@@ -32,11 +32,21 @@
   display: none;
 }
 
-ul.ng-enter {
-  transition: 2s linear all;
+form.ng-enter, tr.ng-enter {
+  transition: 0.1s ease-in all;
   opacity: 0;
+  transform: translateX(-10%);
 }
-
-ul.ng-enter.ng-enter-active {
+form.ng-enter.ng-enter-active, tr.ng-enter.ng-enter-active {
   opacity: 1;
+  transform: translateX(0);
+}
+form.ng-leave, tr.ng-leave {
+  transition: 0.1s ease-out all;
+  opacity: 1;
+  transform: translateX(0);
+}
+form.ng-leave.ng-leave-active, tr.ng-leave.ng-leave-active {
+  opacity: 0;
+  transform: translateX(-10%);
 }
