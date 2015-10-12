@@ -42,7 +42,14 @@ manageApp.controller('manageCtrl', function ($http) {
   
   var manageList = this;
   
-  manageList.refreshProjects = function() {
+  manageList.getUser = function () {
+    manageList.user = user;
+    // $http.get('/user').success(function (response) {
+    //   manageList.user = response;
+    // });
+  };
+  
+  manageList.refreshProjects = function () {
     $http.get('/projects').success(function (response) {
       manageList.projects = response;
     });
@@ -62,5 +69,6 @@ manageApp.controller('manageCtrl', function ($http) {
   
   // initialize home page
   manageList.refreshProjects();
+  // manageList.getUser();
   
 });
