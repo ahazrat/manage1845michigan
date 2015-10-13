@@ -15,7 +15,6 @@ html(ng-app='manageApp')
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js')
     script(src='/lib/angular-ui-router.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js')
-    
     script(src='js/manage.js')
     
     // styles
@@ -26,7 +25,7 @@ html(ng-app='manageApp')
   body(ng-controller='manageCtrl as manageList')
   
     .curtain
-    include partials/navbar
+    include navbar
     // ng-include(src='"templates/navbar.html"')
     
     .container
